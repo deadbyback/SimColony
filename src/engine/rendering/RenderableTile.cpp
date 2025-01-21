@@ -62,7 +62,8 @@ void RenderableTile::draw(const std::shared_ptr<Shader>& shader) {
     
     // Устанавливаем матрицу модели для позиционирования тайла
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(position.x, position.y, 0.0f));
+    // Смещаем тайл на половину его размера для центрирования
+    model = glm::translate(model, glm::vec3(position.x - width/2.0f, position.y - height/2.0f, 0.0f));
     shader->setMat4("model", model);
 
     // Устанавливаем цвет подсветки
