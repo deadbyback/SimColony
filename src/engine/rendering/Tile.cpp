@@ -2,6 +2,8 @@
 #include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>
 
+namespace engine {
+
 Tile::Tile(float width, float height) : width(width), height(height) {
     initializeBuffers();
 }
@@ -72,3 +74,5 @@ void Tile::draw(const std::shared_ptr<Shader>& shader) {
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
+
+} // namespace engine

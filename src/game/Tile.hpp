@@ -13,10 +13,10 @@ enum class TileType {
 
 // Структура для хранения данных о тайле
 struct TileData {
-    TileType type;                          // Тип тайла
-    std::shared_ptr<Texture> texture;       // Текстура тайла
-    bool walkable;                          // Можно ли ходить по тайлу
-    float elevation;                        // Высота тайла (для будущего использования)
+    TileType type;                                  // Тип тайла
+    std::shared_ptr<engine::Texture> texture;       // Текстура тайла
+    bool walkable;                                  // Можно ли ходить по тайлу
+    float elevation;                                // Высота тайла (для будущего использования)
     
     // Конструктор по умолчанию
     TileData() 

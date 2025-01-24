@@ -3,7 +3,9 @@
 #include <sstream>
 #include <stdexcept>
 
-std::shared_ptr<Shader> ShaderLoader::loadFromFiles(
+namespace engine {
+
+std::shared_ptr<engine::Shader> ShaderLoader::loadFromFiles(
     const std::string& vertexPath, 
     const std::string& fragmentPath
 ) {
@@ -12,7 +14,7 @@ std::shared_ptr<Shader> ShaderLoader::loadFromFiles(
     std::string fragmentCode = readFile(fragmentPath);
 
     // Создаём новый шейдер
-    return std::make_shared<Shader>(vertexCode, fragmentCode);
+    return std::make_shared<engine::Shader>(vertexCode, fragmentCode);
 }
 
 std::string ShaderLoader::readFile(const std::string& filePath) {
@@ -36,3 +38,5 @@ std::string ShaderLoader::readFile(const std::string& filePath) {
         );
     }
 }
+
+} // namespace engine

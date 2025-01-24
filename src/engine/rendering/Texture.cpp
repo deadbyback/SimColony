@@ -3,6 +3,8 @@
 #include <stb_image.h>
 #include <iostream>
 
+namespace engine {
+
 Texture::Texture(const std::string& path, bool flip) : id(0), width(0), height(0), channels(0) {
     // Устанавливаем настройку переворота изображения
     stbi_set_flip_vertically_on_load(flip);
@@ -55,3 +57,5 @@ void Texture::bind(unsigned int slot) const {
     glActiveTexture(GL_TEXTURE0 + slot);
     glBindTexture(GL_TEXTURE_2D, id);
 }
+
+} // namespace engine

@@ -16,6 +16,8 @@ find_package(imgui CONFIG REQUIRED)
 add_executable(${PROJECT_NAME} 
     src/main.cpp
     src/engine/Window.cpp
+    src/engine/core/Renderer.cpp
+    src/engine/core/ResourceCache.cpp
     src/engine/rendering/Shader.cpp
     src/engine/rendering/ShaderLoader.cpp
     src/engine/rendering/Texture.cpp

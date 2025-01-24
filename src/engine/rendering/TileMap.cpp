@@ -1,6 +1,8 @@
 #include "TileMap.hpp"
 #include <algorithm>
 
+namespace engine {
+
 const float TileMap::TILE_WIDTH = 1.0f;
 const float TileMap::TILE_HEIGHT = 1.0f;
 const float TileMap::TILE_GAP = 0.0f;
@@ -55,13 +57,9 @@ GridPosition TileMap::worldToGrid(const glm::vec2& worldPos) const {
     // Размер тайла с учетом промежутка
     float tileSize = TILE_WIDTH + TILE_GAP;
     
-    // Смещаем координаты на половину размера тайла для центрирования
-    float offsetX = worldPos.x + (tileSize / 2.0f);
-    float offsetY = worldPos.y + (tileSize / 2.0f);
-    
     // Преобразуем в координаты тайла
-    int gridX = static_cast<int>(std::floor(offsetX / tileSize));
-    int gridY = static_cast<int>(std::floor(offsetY / tileSize));
+    int gridX = static_cast<int>(std::floor(worldPos.x / tileSize));
+    int gridY = static_cast<int>(std::floor(worldPos.y / tileSize));
 
     return GridPosition(gridX, gridY);
 }
@@ -92,3 +90,5 @@ bool TileMap::isValidPosition(int x, int y) const {
 int TileMap::getIndex(int x, int y) const {
     return y * size.x + x;
 }
+
+} // namespace engine

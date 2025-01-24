@@ -2,6 +2,8 @@
 #include <glad/glad.h>
 #include <string>
 
+namespace engine {
+
 class Texture {
 public:
     // Загружает текстуру из файла. Второй параметр определяет, нужно ли переворачивать изображение
@@ -21,3 +23,5 @@ private:
     int height;            // Высота изображения
     int channels;          // Количество цветовых каналов
 };
+
+} // namespace engine

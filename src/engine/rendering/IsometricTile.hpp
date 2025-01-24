@@ -5,13 +5,15 @@
 #include "Shader.hpp"
 #include "Texture.hpp"
 
+namespace engine {
+
 class IsometricTile {
 public:
     IsometricTile(float width = 1.0f, float height = 1.0f);
     ~IsometricTile();
 
     // Метод для отрисовки тайла
-    void draw(const std::shared_ptr<Shader>& shader);
+    void draw(const std::shared_ptr<engine::Shader>& shader);
 
     // Методы для управления позицией и трансформацией
     void setPosition(const glm::vec2& position);
@@ -19,7 +21,7 @@ public:
     void setRotation(float rotation);
 
     // Метод установки текстуры
-    void setTexture(const std::shared_ptr<Texture>& tex);
+    void setTexture(const std::shared_ptr<engine::Texture>& tex);
 
     void setDepthOffset(float offset) {
         depthOffset = offset;
@@ -45,9 +47,11 @@ private:
     float depthOffset = 0.0f;
     bool isHighlighted = false;
 
-    std::shared_ptr<Texture> texture;
+    std::shared_ptr<engine::Texture> texture;
 
     // Вспомогательные методы
     void setupMesh(float width, float height);
     void updateModelMatrix();
 };
+
+} // namespace engine

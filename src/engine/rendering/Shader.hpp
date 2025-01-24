@@ -1,37 +1,34 @@
 #pragma once
-#include <string>
-#include <unordered_map>
 
-#include <glad/glad.h>
+#include <string>
 #include <glm/glm.hpp>
+
+namespace engine {
 
 class Shader {
 public:
-    // Конструктор принимает код шейдеров в виде строк
+    // Конструктор для загрузки из файлов
+    Shader(const std::string& name);
+    
+    // Конструктор для создания из кода
     Shader(const std::string& vertexCode, const std::string& fragmentCode);
+    
     ~Shader();
 
-    // Активация шейдерной программы
-    void use() const;
-
-    // Утилиты для установки uniform-переменных
+    void use();
     void setBool(const std::string& name, bool value);
     void setInt(const std::string& name, int value);
     void setFloat(const std::string& name, float value);
     void setVec2(const std::string& name, const glm::vec2& value);
     void setVec3(const std::string& name, const glm::vec3& value);
     void setVec4(const std::string& name, const glm::vec4& value);
-    void setMat4(const std::string& name, const glm::mat4& value);
+    void setMat2(const std::string& name, const glm::mat2& mat);
+    void setMat3(const std::string& name, const glm::mat3& mat);
+    void setMat4(const std::string& name, const glm::mat4& mat);
 
 private:
-    // ID шейдерной программы в OpenGL
-    GLuint programId;
-    
-    // Кэш расположений uniform-переменных
-    std::unordered_map<std::string, GLint> uniformLocationCache;
-
-    // Вспомогательные методы
-    void compileAndLink(const std::string& vertexCode, const std::string& fragmentCode);
-    void checkCompileErrors(GLuint shader, const std::string& type);
-    GLint getUniformLocation(const std::string& name);
+    unsigned int ID;
+    void compileAndLink(const char* vertexCode, const char* fragmentCode);
 };
+
+} // namespace engine

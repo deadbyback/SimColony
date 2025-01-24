@@ -6,6 +6,8 @@
 #include "RenderableTile.hpp"
 #include "../../game/Tile.hpp"
 
+namespace engine {
+
 class TileMap {
 public:
     // Конструктор принимает размеры карты
@@ -15,9 +17,11 @@ public:
     void setTile(int x, int y, const TileData& data);
     TileData* getTileData(int x, int y);
     // Отрисовка всей карты
-    void draw(const std::shared_ptr<Shader>& shader);
+    void draw(const std::shared_ptr<engine::Shader>& shader);
     // Обновление подсвеченного тайла
     void updateHoveredTile(const GridPosition& pos);
+    // Проверка, является ли тайл подсвеченным
+    bool isHoveredTile(int x, int y) const { return hoveredTile.x == x && hoveredTile.y == y; }
 
     // Геометрические преобразования
     glm::vec2 gridToWorld(const GridPosition& pos) const;  // Из координат сетки в мировые
@@ -32,7 +36,7 @@ public:
 private:
     glm::ivec2 size;  // Размеры карты в тайлах
     std::vector<TileData> tiles;  // Данные тайлов
-    std::vector<std::shared_ptr<RenderableTile>> renderTiles;  // Визуальное представление тайлов
+    std::vector<std::shared_ptr<engine::RenderableTile>> renderTiles;  // Визуальное представление тайлов
     GridPosition hoveredTile{-1, -1};  // Текущий подсвеченный тайл
     
     // Вспомогательные методы
@@ -47,3 +51,5 @@ private:
     static const float TILE_OFFSET_X;  // Смещение для изометрического вида
     static const float TILE_OFFSET_Y;
 };
+
+} // namespace engine
