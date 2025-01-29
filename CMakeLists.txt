@@ -12,37 +12,39 @@ find_package(glfw3 CONFIG REQUIRED)
 find_package(glad CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
+find_package(OpenMP REQUIRED)
 
-add_executable(${PROJECT_NAME} 
+set(SOURCES
     src/main.cpp
     src/engine/Window.cpp
     src/engine/core/Renderer.cpp
     src/engine/core/ResourceCache.cpp
+    src/engine/rendering/Camera.cpp
     src/engine/rendering/Shader.cpp
     src/engine/rendering/ShaderLoader.cpp
     src/engine/rendering/Texture.cpp
-    src/engine/rendering/IsometricTile.cpp
-    src/engine/rendering/RenderableTile.cpp
     src/engine/rendering/TileMap.cpp
-    src/engine/rendering/Tile.cpp
-    src/engine/rendering/Camera.cpp
+    src/engine/rendering/RenderableTile.cpp
+    src/engine/rendering/IsometricTile.cpp
+
+    src/game/world/WorldMap.cpp
+    src/game/world/LocalMapGenerator.cpp
+    src/game/world/TileRegistry.cpp
 )
+
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_SOURCE_DIR}/src/engine/rendering/shaders
-    $<TARGET_FILE_DIR:${PROJECT_NAME}>/shaders
-)
-
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_SOURCE_DIR}/src/engine/rendering/textures
-    $<TARGET_FILE_DIR:${PROJECT_NAME}>/textures
+        ${CMAKE_SOURCE_DIR}/content
+        ${CMAKE_BINARY_DIR}/content
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${VCPKG_INSTALLED_DIR}/include  # Прямой путь к заголовочным файлам vcpkg
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/third_party
 )
 
 find_path(GLM_INCLUDE_DIRS "glm/glm.hpp")
@@ -62,6 +64,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     glad::glad
     glm::glm
     imgui::imgui
+    nlohmann_json::nlohmann_json
+    OpenMP::OpenMP_CXX
 )
 
 # Копируем зависимые DLL в директорию с исполняемым файлом

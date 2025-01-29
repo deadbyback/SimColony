@@ -1,0 +1,92 @@
+{
+    "tile_types": {
+        "GROUND": {
+            "id": 0,
+            "name": "Ground",
+            "texture": "tiles/ground/stone_ground.png",
+            "properties": {
+                "walkable": true,
+                "buildable": true,
+                "base_fertility": 0.5,
+                "base_elevation": 0.0
+            }
+        },
+        "WATER": {
+            "id": 1,
+            "name": "Water",
+            "texture": "tiles/water/sea_water.png",
+            "properties": {
+                "walkable": false,
+                "buildable": false,
+                "base_fertility": 0.0,
+                "base_elevation": -1.0
+            }
+        },
+        "DIRT": {
+            "id": 2,
+            "name": "Dirt",
+            "texture": "tiles/ground/dirt.png",
+            "properties": {
+                "walkable": true,
+                "buildable": true,
+                "base_fertility": 0.5,
+                "base_elevation": 0.0
+            }
+        },
+        "GRASS": {
+            "id": 3,
+            "name": "Grass",
+            "texture": "tiles/ground/grass.png",
+            "properties": {
+                "walkable": true,
+                "buildable": true,
+                "base_fertility": 0.5,
+                "base_elevation": 0.0
+            }
+        },
+        "MOUNTAIN": {
+            "id": 4,
+            "name": "Mountain",
+            "texture": "tiles/ground/mountain.png",
+            "properties": {
+                "walkable": false,
+                "buildable": false,
+                "base_fertility": 0.5,
+                "base_elevation": 1.0
+            }
+        },
+        "SAND": {
+            "id": 5,
+            "name": "Sand",
+            "texture": "tiles/ground/sand.png",
+            "properties": {
+                "walkable": true,
+                "buildable": true,
+                "base_fertility": 0.5,
+                "base_elevation": 0.0
+            }
+        },
+        "SNOW": {
+            "id": 6,
+            "name": "Snow",
+            "texture": "tiles/ground/snow.png",
+            "properties": {
+                "walkable": true,
+                "buildable": true,
+                "base_fertility": 0.5,
+                "base_elevation": 0.0
+            }
+        },
+        "FOREST": {
+            "id": 7,
+            "name": "Forest",
+            "texture": "tiles/ground/forest.png",
+            "properties": {
+                "walkable": true,
+                "buildable": true,
+                "base_fertility": 0.5,
+                "base_elevation": 0.0
+            }
+        }
+    }
+}

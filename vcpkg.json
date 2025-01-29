@@ -5,6 +5,8 @@
       "glfw3",
       "glad",
       "glm",
-      "imgui"
+      "imgui",
+      "nlohmann-json",
+      "fastnoise2"
     ]
   }

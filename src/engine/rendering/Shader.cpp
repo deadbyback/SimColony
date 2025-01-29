@@ -9,8 +9,8 @@ namespace engine {
 
 Shader::Shader(const std::string& name) {
     // Загружаем шейдеры из файлов
-    std::string vertPath = "../../src/engine/rendering/shaders/" + name + ".vert";
-    std::string fragPath = "../../src/engine/rendering/shaders/" + name + ".frag";
+    std::string vertPath = "../../content/shaders/" + name + ".vert";
+    std::string fragPath = "../../content/shaders/" + name + ".frag";
 
     std::cout << "Loading vertex shader: " << vertPath << std::endl;
     std::cout << "Loading fragment shader: " << fragPath << std::endl;

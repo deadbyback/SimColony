@@ -7,17 +7,26 @@ enum class TileType {
     NONE,           // Пустой/недоступный тайл
     GROUND,         // Обычная земля
     WATER,          // Вода
+    DIRT,           // Грязь
+    GRASS,          // Трава
     MOUNTAIN,       // Гора/камень
+    SAND,           // Песок
+    SNOW,           // Снег
+    FOREST,         // Лес
     // Добавим другие типы позже
 };
 
 // Структура для хранения данных о тайле
 struct TileData {
-    TileType type;                                  // Тип тайла
+    TileType type = TileType::GROUND;               // Тип тайла
     std::shared_ptr<engine::Texture> texture;       // Текстура тайла
-    bool walkable;                                  // Можно ли ходить по тайлу
-    float elevation;                                // Высота тайла (для будущего использования)
-    
+    bool walkable = true;                           // Можно ли ходить по тайлу
+    bool buildable = true;                          // Можно ли строить на тайле
+    float elevation = 0.0f;                         // Высота тайла
+    float fertility = 0.0f;                         // Плодородность тайла
+    float humidity = 0.0f;                          // Влажность тайла
+    float temperature = 0.0f;                       // Температура тайла
+
     // Конструктор по умолчанию
     TileData() 
         : type(TileType::NONE)
